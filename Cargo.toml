@@ -1,0 +1,5 @@
+[package]
+
+name = "sothr_lib"
+version = "0.0.1"
+authors = ["Drew Short <nerian.drew@gmail.com>"]
