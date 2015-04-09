@@ -1,6 +1,4 @@
-// Copyright 2015 Drew Short <drew@sothr.com>. See the COPYRIGHT
-// file at the top-level directory of this distribution and at
-// http://sothr.com/projects/rust/sothr_lib/COPYRIGHT.
+// Copyright 2015 Drew Short <drew@sothr.com>.
 //
 // Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or
 // http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
