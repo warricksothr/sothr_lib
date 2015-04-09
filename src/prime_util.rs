@@ -6,6 +6,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use std::iter::range_step_inclusive;
+
 /**
     Determines if a specified number is prime
 
@@ -50,4 +52,24 @@ pub fn is_prime(num: u64) -> bool {
     }
     // If this far, then the number is definitively prime
     true
+}
+
+/**
+	Generate a list of primes between 0 and the end value
+*/
+pub fn list_of_primes(end: u64) -> Option<Vec<u64>> {
+	if end < 2u64 {
+		return None
+	}
+
+	let mut primes: Vec<u64> = Vec::new();
+	primes.push(2u64);
+
+	let limit = ((end as f64).sqrt() as u64) + 1;
+
+	for i in range_step_inclusive(3u64, end, 2u64) {
+
+	}
+
+	Some(primes)
 }

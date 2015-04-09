@@ -3,3 +3,13 @@
 name = "sothr_lib"
 version = "0.0.1"
 authors = ["Drew Short <nerian.drew@gmail.com>"]
+
+description = "A set of utilities that I've grouped together as a library for my side projects"
+
+readme = "readme.md"
+
+documentation = "http://sothr.com/projects/rust/sothr_lib"
+homepage = "https://github.com/warricksothr/sothr_lib"
+repository = "https://github.com/warricksothr/sothr_lib"
+
+license = "Apache-2.0"
