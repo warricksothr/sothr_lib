@@ -75,7 +75,6 @@ pub fn is_palindrome(str: &str) -> bool {
   let s = "test";
   assert_eq!("tast",replace_char(s,'e','a'));
   ```
-
 */
 pub fn replace_char(str: &str, to_replace: char, replace_with: char) -> String {
   let mut result = String::new();
@@ -107,7 +106,6 @@ pub fn replace_char(str: &str, to_replace: char, replace_with: char) -> String {
   assert_eq!("This is the string to replace stuff in",replace_string(s, "cow", "string"));
   assert_eq!("Thisisthestringtoreplacestuffin",replace_string(s, " ", ""));
   ```
-
 */
 pub fn replace_string(str: &str, to_replace: &str, replace_with: &str) -> String {
   let mut result = String::new();

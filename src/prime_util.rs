@@ -9,7 +9,7 @@
 use std::iter::range_step_inclusive;
 
 /**
-    Determines if a specified number is prime
+    Determines if a specified number is prime.
 
     # Arguments 
 
@@ -55,21 +55,52 @@ pub fn is_prime(num: u64) -> bool {
 }
 
 /**
-	Generate a list of primes between 0 and the end value
+  Generate a list of primes between 0 and the end value.
+
+  # Arguments
+
+  * 'look_until' - The end of the range to look for primes within
+
+  # Examples
+
+  ```rust
+  use sothr_lib::prime_util::list_of_primes;
+  let prime_list = vec![2,3,5,7,11];
+  assert_eq!(prime_list, list_of_primes(12).expect("No Primes?!?!?"));
+  ```
 */
-pub fn list_of_primes(end: u64) -> Option<Vec<u64>> {
-	if end < 2u64 {
-		return None
-	}
+pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
+  if look_until < 2u64 {
+    return None
+  }
 
-	let mut primes: Vec<u64> = Vec::new();
-	primes.push(2u64);
+  let end = look_until as usize;
 
-	let limit = ((end as f64).sqrt() as u64) + 1;
+  //prepopulate the sieve
+  let mut sieve: Vec<bool> = Vec::with_capacity(end);
+  let mut i: usize = 0;
+  while i < end {
+    sieve.push(true);
+    i += 1;
+  }
 
-	for i in range_step_inclusive(3u64, end, 2u64) {
+  let f_look_until = look_until as f64;
+  let estimate_of_primes = ((f_look_until / f_look_until.ln()) * (1f64 + (1.2762 / f_look_until.ln()))) as usize;
+  let mut primes: Vec<u64> = Vec::with_capacity(estimate_of_primes);
+  primes.push(2u64);
 
-	}
+  let limit = (f_look_until.sqrt() as usize) + 1;
 
-	Some(primes)
+  for i in range_step_inclusive(3usize, end-1, 2usize) {
+    if sieve[i] {
+      primes.push(i as u64);
+      if i < limit {
+        for j in range_step_inclusive(i*i, end-1, i) {
+          sieve[j] = false;
+        }
+      }
+    }
+  }
+
+  Some(primes)
 }

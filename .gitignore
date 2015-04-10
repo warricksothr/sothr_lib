@@ -1,2 +1,5 @@
 target
 Cargo.lock
+
+//ignore vim swap files
+*.swp
