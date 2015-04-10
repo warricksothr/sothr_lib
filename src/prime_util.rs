@@ -77,7 +77,7 @@ pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
   let end = look_until as usize;
 
   //prepopulate the sieve
-  let mut sieve: Vec<bool> = Vec::with_capacity(end);
+  let mut sieve: Vec<bool> = Vec::with_capacity(end/2);
   let mut i: usize = 0;
   while i < end {
     sieve.push(true);
@@ -89,18 +89,31 @@ pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
   let mut primes: Vec<u64> = Vec::with_capacity(estimate_of_primes);
   primes.push(2u64);
 
-  let limit = (f_look_until.sqrt() as usize) + 1;
+  let limit = ((f_look_until/2).sqrt() as usize) + 1;
 
-  for i in range_step_inclusive(3usize, end-1, 2usize) {
+  // in this lineup index 0 == 3
+  // therefore index 1 == 5, 2 == 7, 3 == 9, etc...
+  for i in 0..end/2 {
     if sieve[i] {
-      primes.push(i as u64);
+      primes.push((i+i+3) as u64);
       if i < limit {
-        for j in range_step_inclusive(i*i, end-1, i) {
+        // selectively sieve out non primes. We're only concerned with odds as
+        // we've already removed even values from the list.
+        // i = 0, therefore i represents 3
+        // i+i+3 = 3
+        // simple proofs of odd counts
+        // 0 1 2 3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+        //[3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39,41,43,45,47,49]
+        //0,3,6,9,12 = <3>,9,15,21,27
+        //1,6,11,16 = <5>,15,25,35
+        //2,9,16,23 = <7>,21,35,49
+        for j in range_step_inclusive(i+i+3, end-1, i+i+3) {
           sieve[j] = false;
         }
       }
     }
   }
+
 
   Some(primes)
 }
