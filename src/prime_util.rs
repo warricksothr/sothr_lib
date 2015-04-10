@@ -113,7 +113,48 @@ pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
       }
     }
   }
-
-
   Some(primes)
+}
+
+/**
+    Find a specified number of primes.
+
+    # Arguments
+
+    * 'look_until' - The end of the range to look for primes within
+
+    # Examples
+
+    ```rust
+    use sothr_lib::prime_util::find_number_of_primes;
+    let prime_list = vec![2,3,5,7,11];
+    assert_eq!(prime_list, find_number_of_primes(5).expect("No Primes?!?!?"));
+    ```
+*/
+pub fn find_number_of_primes(num_of_primes: usize) -> Option<Vec<u64>> {
+    // very slow way to find primes
+    // TODO: Use a more efficient algorithm in the future
+    
+    if num_of_primes == 0 {
+        return None;
+    }
+
+    let mut primes: Vec<u64> = Vec::with_capacity(num_of_primes);
+    primes.push(2u64);
+
+    let mut num = 3u64;
+    loop {
+        let mut is_prime = true;
+        for prime in primes.iter() {
+            if num % prime == 0 {
+                is_prime = false;
+                break;
+            }
+        }
+        if is_prime { primes.push(num); }
+        if primes.len() >= num_of_primes { break; }
+        num += 1;
+    }
+    
+    Some(primes)
 }
