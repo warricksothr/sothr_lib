@@ -89,7 +89,7 @@ pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
   let mut primes: Vec<u64> = Vec::with_capacity(estimate_of_primes);
   primes.push(2u64);
 
-  let limit = ((f_look_until/2).sqrt() as usize) + 1;
+  let limit = (((look_until/2) as f64).sqrt() as usize) + 1;
 
   // in this lineup index 0 == 3
   // therefore index 1 == 5, 2 == 7, 3 == 9, etc...
