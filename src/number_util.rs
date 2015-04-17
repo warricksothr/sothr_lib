@@ -17,8 +17,9 @@
 
     ```rust
     use sothr_lib::number_util::factors_for_number;
-    let check = vec![1,3,5,15];
-    assert_eq!(check, factors_for_number(15));
+    assert_eq!(vec![1,3], factors_for_number(3));
+    assert_eq!(vec![1,2,4], factors_for_number(4));
+    assert_eq!(vec![1,3,5,15], factors_for_number(15));
     ```
 */
 pub fn factors_for_number(number: u64) -> Vec<u64> {
@@ -31,7 +32,9 @@ pub fn factors_for_number(number: u64) -> Vec<u64> {
         if number % current == 0 {
             limit = number/current;
             tail.insert(0,limit);
-            head.push(current);
+            if limit != current {
+                head.push(current);
+            }
         }
         current += 1;
     }
