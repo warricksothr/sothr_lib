@@ -65,8 +65,8 @@ pub fn is_prime(num: u64) -> bool {
 
   ```rust
   use sothr_lib::prime_util::list_of_primes;
-  let prime_list = vec![2,3,5,7,11];
-  assert_eq!(prime_list, list_of_primes(12).expect("No Primes?!?!?"));
+  let prime_list = vec![2,3,5,7];
+  assert_eq!(prime_list, list_of_primes(10).expect("No Primes?!?!?"));
   ```
 */
 pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
@@ -112,6 +112,14 @@ pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
         }
       }
     }
+  }
+  // Fix for primes over the limit
+  for i in (0..primes.len()).rev() {
+    if primes[i] >= look_until {
+        primes.pop();
+        continue;
+    }
+    break;
   }
   Some(primes)
 }
