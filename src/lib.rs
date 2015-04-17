@@ -10,6 +10,7 @@
 
 pub mod str_util;
 pub mod prime_util;
+pub mod number_util;
 
 #[cfg(test)]
 mod tests {
