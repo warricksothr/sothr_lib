@@ -25,4 +25,33 @@ mod tests {
     fn test_example() {
         assert_eq!("test", "test");
     }
+
+    #[test]
+    fn test_list_of_primes() {
+        let limit = 2_000_000u64;
+        let mut primes = Vec::new();
+        for i in 2..limit {
+            if prime_util::is_prime(i) {
+                primes.push(i);
+            }
+        }
+
+        //now check that the function returns the same list as the brute force algorithm
+        let supposed_primes = prime_util::list_of_primes(limit).expect("Not enough primes?!?!");
+
+        // make sure all values are indeed prime
+        for prime in supposed_primes.iter() {
+            assert_eq!((true,prime), (prime_util::is_prime(*prime),prime));
+        }
+
+        // if the sets aren't the same size, check what are missing from the sieve
+        // The order should be identical
+        if primes.len() > supposed_primes.len() {
+            for i in 0..primes.len() {
+                assert_eq!(primes[i], supposed_primes[i]);
+            }
+        }
+
+        assert_eq!(primes.len(), supposed_primes.len());
+    }
 }
