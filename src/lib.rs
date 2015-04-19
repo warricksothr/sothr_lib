@@ -8,6 +8,8 @@
 
 #![feature(core)] //Required to compile 3/31/2015. Test again later when libs have stablized.
 
+extern crate num;
+
 pub mod str_util;
 pub mod prime_util;
 pub mod number_util;

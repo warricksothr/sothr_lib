@@ -13,3 +13,6 @@ homepage = "https://github.com/warricksothr/sothr_lib"
 repository = "https://github.com/warricksothr/sothr_lib"
 
 license = "Apache-2.0"
+
+[dependencies]
+num = "*"
