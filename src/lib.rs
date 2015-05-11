@@ -7,6 +7,7 @@
 // except according to those terms.
 
 #![feature(core)] //Required to compile 3/31/2015. Test again later when libs have stablized.
+#![feature(step_by)] //Required to compile 5/11/2015. Test again later. This is used to step over a range.
 
 extern crate num;
 

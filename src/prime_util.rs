@@ -6,8 +6,6 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use std::iter::range_step_inclusive;
-
 /**
     Determines if a specified number is prime.
 
@@ -107,7 +105,7 @@ pub fn list_of_primes(look_until: u64) -> Option<Vec<u64>> {
         //0,3,6,9,12 = <3>,9,15,21,27
         //1,6,11,16 = <5>,15,25,35
         //2,9,16,23 = <7>,21,35,49
-        for j in range_step_inclusive(i, end-1, i+i+3) {
+        for j in (i..end).step_by(i+i+3) {
             if j == i { continue; }
             sieve[j] = false;
         }
