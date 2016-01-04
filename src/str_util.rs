@@ -6,8 +6,6 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-use std::iter::order::equals;
-
 /**
   Converts a vector of types that have the ToString trait into 
   a pretty string
@@ -54,8 +52,7 @@ pub fn string_for_vector<T: ToString>(vec: Vec<T>) -> String {
 pub fn is_palindrome(str: &str) -> bool {
   let iter =str.chars();
   let iter_rev = str.chars().rev();
-  let n = str.len() / 2;
-  equals(iter.take(n), iter_rev.take(n))
+  iter.eq(iter_rev)
 }
 
 /**

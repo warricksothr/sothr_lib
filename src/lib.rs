@@ -6,8 +6,8 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+#![feature(zero_one)] //Required to compile 9/22/2015. Test again later.
 #![feature(step_by)] //Required to compile 5/11/2015. Test again later. This is used to step over a range.
-#![feature(iter_order)] //Required to compile 7/8/2015
 
 extern crate num;
 
